@@ -1,0 +1,50 @@
+.eventItem-container {
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    grid-template-rows: 1fr;
+    gap: 0.5rem;
+
+    .eventItem__date {
+        border: 2px solid var(--white);
+        height: 100%;
+        display: grid;
+        place-content: center;
+        color: var(--white);
+        border-radius: 5px;
+        text-align: center;
+        font-size: 0.75rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+    .eventItem-card__container {
+        padding: 0.5rem;
+        border-bottom: 2px solid var(--light-white);
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+    .eventItem-card__title {
+        color: var(--white);
+        font-weight: 400;
+        text-shadow: 1px 1px 0px var(--pink);
+        font-size: 22px;
+    }
+    .eventItem-card__location {
+        color: var(--light-white);
+        font-size: 0.75rem;
+    }
+    .eventItem-card__desc-container {
+        display: flex;
+        justify-content: space-between;
+
+        .eventItem-card__time {
+            color: var(--white);
+            font-size: 0.8rem;
+        }
+        .eventItem-card__price {
+            color: var(--green);
+            font-size: 1rem;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+.footer-container {
+    border: 2px solid red;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+
+    .footer__ul {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        height: 100%;
+        list-style: none;
+    }
+
+    .footer__li {
+        background: var(--white);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0.2rem;
+        border-radius: 0.5rem;
+    }
+}

@@ -1,0 +1,23 @@
+.eventPage-container {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 1rem;
+    gap: 0.5rem;
+    margin-bottom: 4rem;
+
+    .event__search {
+        border-radius: 5px;
+        background: var(--light-grey);
+        height: 2rem;
+        color: var(--light-grey);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding-left: 0.5rem;
+    }
+    .event__search:hover {
+        cursor: text;
+    }
+}

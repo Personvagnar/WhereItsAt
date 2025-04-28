@@ -1,0 +1,9 @@
+.eDetails-container {
+    width: 90%;
+    height: 90%;
+    z-index: 999;
+    background: white;
+    position: fixed;
+    top: auto;
+    left: auto;
+}
