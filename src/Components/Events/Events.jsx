@@ -1,39 +1,63 @@
 import './events.css';
 import EventItem from '../EventItem/EventItem';
 import { useState, useEffect } from 'react';
-import { fetchAPI} from '../../Hooks/fetchAPI';
+import useFetchConcerts from '../../Hooks/fetchAPI';
+import useConcertStore from '../../Stores/ConcertStore';
+import Modal from '../../Modal/Modal';
 
 function Events() {
-  const [events, setEvents] = useState([]);
+  const { data, isLoading, error } = useFetchConcerts();
+
+  const events = useConcertStore((state) => state.concerts)
+  const setConcerts = useConcertStore((state) => state.setConcerts);
+  const addTicket = useConcertStore((state) => state.addTicket);
+  const removeTicket = useConcertStore((state) => state.removeTicket);
+
+  const [selectedConcert, setSelectedConcert] = useState(null);
+
+  const handleConcertClick =(event) => {
+    setSelectedConcert(event);
+  };
+
+  const closeModal = () => {
+    setSelectedConcert(null);
+  };
 
   useEffect(() => {
-    async function loadEvents() {
-      try {
-        const data = await fetchAPI();
-        if (data && Array.isArray(data.events)) {
-          setEvents(data.events);
-          console.log(data);
-        } else {
-          console.error("API response does not contain 'events' array", data);
-        }
-      } catch (err) {
-        console.error('Failed to fetch API', err);
-      }
+    if (data && Array.isArray(data.events)) {
+      setConcerts(data.events);
+      console.log('Fetched and set events:', data.events);
     }
-    loadEvents();
-  }, []);
+  }, [data, setConcerts]);
+
+  if (isLoading) return <p>Loading events...</p>;
+  if (error) return <p>Error loading events: {error}</p>;
 
   return (
     <section className="eventPage-container">
-        <figure className="event__search">
-            <i className="fas fa-search"></i>
-            <p className='event__search--desc'>enter location...</p>
-        </figure>
-        {events.map((event) => (
-          <EventItem key={event.id} event={event} />
-        ))}
+      <figure className="event__search">
+        <i className="fas fa-search"></i>
+        <p className="event__search--desc">enter location...</p>
+      </figure>
+
+      {events.map((event) => (
+        <EventItem 
+          key={event.id} 
+          event={event}
+          onClick={() => handleConcertClick(event)}
+          />
+      ))}
+
+      {selectedConcert && (
+        <Modal
+          concert={selectedConcert}
+          onClose={closeModal}
+          onAddTicket={addTicket}
+          onRemoveTicket={removeTicket}
+        />
+      )}
     </section>
-  )
+  );
 }
 
-export default Events
+export default Events;

@@ -1,18 +1,35 @@
-const EVENTS_URL = 'https://santosnr6.github.io/Data/events.json';
+import { useState, useEffect } from 'react';
 
-export async function fetchAPI() {
-  try {
-    const response = await fetch(EVENTS_URL);
+const useFetchConcerts = () => {
+  const [data, setData] = useState({ events: [] });
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch events: ${response.status}`);
-    }
+  useEffect(() => {
+    const fetchConcerts = async () => {
+      try {
+        const response = await fetch('https://santosnr6.github.io/Data/events.json');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        if (result && result.events && Array.isArray(result.events)) {
+          setData(result);  // Set the entire data object
+        } else {
+          setError("API response is not in the expected format.");
+        }
 
-    const data = await response.json();
-    return data;
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  } catch (error) {
-    console.error('Fetch error:', error.message);
-    throw error;
-  }
-}
+    fetchConcerts();
+  }, []);
+
+  return { data, isLoading, error };
+};
+
+export default useFetchConcerts;
