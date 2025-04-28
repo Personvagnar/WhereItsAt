@@ -2,7 +2,10 @@ import './eventItem.css';
 
 function EventItem({event}) {
   return (
-    <section className="eventItem-container">
+    <section 
+      className="eventItem-container"
+      onClick ={() => console.log(event)}
+      >
       <figure className='eventItem__date'>
         <p>{event.when.date}</p>
       </figure>
