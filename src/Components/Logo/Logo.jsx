@@ -3,7 +3,7 @@ import logoImage from '../../assets/Logos/logo.png';
 
 function Logo() {
   return (
-    <section className='logo-container sansita'>
+    <section className='logo-container'>
         <img src= {logoImage} alt='logo' className='logo__image' />
         <h1 className='logo__title italic bold'>Where It's @</h1>
         <p className='logo__details italic'>Ticketing made easy</p>

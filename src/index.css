@@ -33,9 +33,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 4px solid green;
   width: 100%;
-  height: 100%;
 }
 .italic {
   font-style: italic;
@@ -48,4 +46,9 @@
   font-style: italic;
   font-size: 2rem;
   color: var(--pink);
+}
+.link {
+  list-style: none;
+  text-decoration: none;
+  color: var(--green);
 }

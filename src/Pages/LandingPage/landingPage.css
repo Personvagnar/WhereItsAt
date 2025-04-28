@@ -1,0 +1,11 @@
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    width: 100%;   /* Full width of the container */
+    text-align: center;
+    background-color: #f0f0f0; /* Light background color */
+    overflow: hidden;  /* Prevents overflow */
+  }
