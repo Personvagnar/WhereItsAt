@@ -1,12 +1,13 @@
 import './eventsPage.css';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
-/*nånting hände med Events.jsx här, får titta på det */
+import Events from '../../Components/Events/Events';
 
 function EventsPage() {
   return (
     <>
         <Header />
+        <Events />
         <Footer />
     </>
   )

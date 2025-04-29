@@ -1,37 +1,22 @@
 import './events.css';
 import EventItem from '../EventItem/EventItem';
-import { useState, useEffect } from 'react';
 import useFetchConcerts from '../../Hooks/fetchAPI';
-import useConcertStore from '../../Stores/ConcertStore';
-import Modal from '../../Modal/Modal';
+import Modal from '../Modal/Modal';
+import { useState, useEffect } from 'react';
 
 function Events() {
   const { data, isLoading, error } = useFetchConcerts();
-
-  const events = useConcertStore((state) => state.concerts)
-  const setConcerts = useConcertStore((state) => state.setConcerts);
-  const addTicket = useConcertStore((state) => state.addTicket);
-  const removeTicket = useConcertStore((state) => state.removeTicket);
-
-  const [selectedConcert, setSelectedConcert] = useState(null);
-
-  const handleConcertClick =(event) => {
-    setSelectedConcert(event);
-  };
-
-  const closeModal = () => {
-    setSelectedConcert(null);
-  };
-
-  useEffect(() => {
-    if (data && Array.isArray(data.events)) {
-      setConcerts(data.events);
-      console.log('Fetched and set events:', data.events);
-    }
-  }, [data, setConcerts]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   if (isLoading) return <p>Loading events...</p>;
   if (error) return <p>Error loading events: {error}</p>;
+
+  const handleEventClick = (event) => {
+    setSelectedEvent(event);
+  };
+  const closeModal = () => {
+    setSelectedEvent(null);
+  };
 
   return (
     <section className="eventPage-container">
@@ -40,21 +25,15 @@ function Events() {
         <p className="event__search--desc">enter location...</p>
       </figure>
 
-      {events.map((event) => (
+      {data.events.map((event) => (
         <EventItem 
           key={event.id} 
           event={event}
-          onClick={() => handleConcertClick(event)}
+          onClick={()=> handleEventClick(event)}
           />
       ))}
-
-      {selectedConcert && (
-        <Modal
-          concert={selectedConcert}
-          onClose={closeModal}
-          onAddTicket={addTicket}
-          onRemoveTicket={removeTicket}
-        />
+      {selectedEvent && (
+        <Modal event={selectedEvent} onClose={closeModal} />
       )}
     </section>
   );

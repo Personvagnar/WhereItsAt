@@ -1,24 +1,39 @@
 import './modal.css';
+import useConcertStore from '../../Stores/ConcertStore';
 
-function Modal({ concert, onClose, onAddTicket, onRemoveTicket }) {
+function Modal({ event, onClose }) {
+  const { cart, addTicket, removeTicket } = useConcertStore();
+
+  const quantity = cart[event.id] || 0;
+
   return (
-    <div className="modal-overlay">
-      <div className="modal-container">
-        <button className="modal-close-btn" onClick={onClose}>X</button>
-        <h2>{concert.name}</h2>
-        <p>{concert.description}</p>
-        <p>Location: {concert.where}</p>
-        <p>Price: {concert.price} SEK</p>
-        <p>Date: {concert.when.date}</p>
-        <p>Time: {concert.when.from} - {concert.when.to}</p>
+    <section className="modal-container">
+      <button onClick={onClose} className='modal__closeBtn'><i class="fa-solid fa-x"></i></button>
+      <h2 className='h2'>Event</h2>
+      <p>You are about to score some tickets to</p>
+      <h2 className='h2'>{event.name}</h2>
+      <section className="modal__details-container">
+        <p>{event.when.date}</p>
+        <p>kl</p>
+        <p>{event.when.from} - {event.when.to}</p>
+      </section>
+      <p>{event.where}</p>
 
-        <div className="modal-buttons">
-          <button onClick={() => onAddTicket(concert.id)}>Add Ticket</button>
-          <button onClick={() => onRemoveTicket(concert.id)}>Remove Ticket</button>
-        </div>
-      </div>
-    </div>
-  );
+      <section className="modal__ticketbox">
+        <h4>
+          {quantity === 0
+          ? `${event.price} sek`
+          : `${quantity * event.price} sek`}
+        </h4>
+        <section className='modal__ticketbox--counter'>
+          <button onClick={() => removeTicket(event.id)}><i class="fa-solid fa-minus"></i></button>
+          <span>{quantity}</span>
+          <button onClick={() => addTicket(event.id)}><i class="fa-solid fa-plus"></i></button>
+        </section>
+      </section>
+      <button className='modal__cartBtn'>Add to cart</button>
+    </section>
+  )
 }
 
 export default Modal;

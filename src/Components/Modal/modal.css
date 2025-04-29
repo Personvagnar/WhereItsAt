@@ -1,46 +1,81 @@
-/* modal.css */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 600px;
-  }
-  
-  .modal-close-btn {
+.modal-container {
+  position: fixed;
+  top: 10%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 2rem;
+  width: 90%;
+  height: 80%;
+  z-index: 999;
+  background: var(--white);
+  border-radius: 5px;
+  border: 2px solid var(--black4);
+  box-shadow: 0px 0px 100px var(--black7);
+
+  .modal__closeBtn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .modal-buttons button {
-    margin: 5px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
+    top: 0;
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid var(--purple);
+    box-shadow: -1px 1px 2px var(--black4);
     border-radius: 5px;
-    cursor: pointer;
+    background: var(--pink);
+    color: var(--black);
   }
-  
-  .modal-buttons button:hover {
-    background-color: #0056b3;
+
+  .modal__details-container {
+    display: flex;
+    gap: 0.5rem;
+    color: var(--green);
   }
-  
+
+  .modal__ticketbox {
+    border: 2px solid var(--pink);
+    width: 80%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal__ticketbox h4 {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+  }
+  .modal__ticketbox--counter {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    justify-content: space-between;
+    border-top: 2px solid var(--pink);
+  }
+
+  .modal__ticketbox--counter button {
+    width: 33%;
+    height: 100%;
+    border-radius: 5px;
+    border: none;
+    background: transparent;
+  }
+
+  .modal__cartBtn {
+    background: var(--green);
+    border: 1px solid var(--purple);
+    width: 80%;
+    height: 10%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px var(--black4);
+    font-family: 'Sansita One';
+    font-size: large;
+    letter-spacing: 1px;
+    color: var(--white);
+  }
+}
