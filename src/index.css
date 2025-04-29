@@ -28,13 +28,6 @@
   width: 100vw;
   font-family: 'Sansita One';
 }
-.page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
 .italic {
   font-style: italic;
 }
@@ -51,4 +44,11 @@
   list-style: none;
   text-decoration: none;
   color: var(--green);
+}
+.pagenotfound {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  font-size: x-large;
+  color: var(--light-white);
 }

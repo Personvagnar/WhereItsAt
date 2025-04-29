@@ -2,8 +2,36 @@ import { create } from "zustand";
 
 const useConcertStore = create((set) => ({
   cart: {},
+  events: [],
+  isLoading: true,
+  error: null,
 
-  // Add a ticket to the cart
+  setEvents: (events) => set({ events }),
+  setLoading: (isLoading) => set({ isLoading }),
+  setError: (error) => set({ error }),
+
+  fetchEvents: async () => {
+    
+    set({ isLoading: true, error: null });
+    try {
+      const response = await fetch('https://santosnr6.github.io/Data/events.json');
+      if (!response.ok) {
+        throw new Error ('Failed APi fetch');
+      }
+      const result = await response.json();
+
+      if (result?.events && Array.isArray(result.events)) {
+        set({ events: result.events });
+      } else {
+        set({ error: "Invalid API"});
+      }
+    } catch (err) {
+      set({ error: err.message });
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+
   addTicket: (eventId) =>
     set((state) => {
       const currentQty = state.cart[eventId] || 0;
@@ -15,7 +43,6 @@ const useConcertStore = create((set) => ({
       };
     }),
 
-  // Remove a ticket from the cart
   removeTicket: (eventId) =>
     set((state) => {
       const currentQty = state.cart[eventId] || 0;
@@ -32,11 +59,8 @@ const useConcertStore = create((set) => ({
       }
     }),
 
-  // Get ticket count
   getTicketCount: (eventId) => (state) => state.cart[eventId] || 0,
 
-  // Optional: clear cart
-  clearCart: () => set({ cart: {} }),
 }));
 
 export default useConcertStore;

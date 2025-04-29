@@ -17,12 +17,19 @@
     }
 
     .footer__li {
-        background: var(--white);
+        background: var(--black4);
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 0.2rem;
         border-radius: 0.5rem;
+    }
+    .footer__li--active {
+        background: var(--white);
+        text-decoration: underline;
+        text-decoration-color: var(--pink);
+        text-shadow: 0px 0px 1px var(--pink);
+        font-size: x-large;
     }
 }

@@ -1,10 +1,19 @@
 import './modal.css';
 import useConcertStore from '../../Stores/ConcertStore';
+import { useEffect } from 'react';
 
 function Modal({ event, onClose }) {
-  const { cart, addTicket, removeTicket } = useConcertStore();
+  const { cart, addTicket, removeTicket, setEvents } = useConcertStore();
 
-  const quantity = cart[event.id] || 0;
+  const quantity = cart[event.id] || 1;
+
+
+
+  const handleAddToCart = () => {
+    addTicket(event.id);
+    console.log({eventId: event.id, quantity: cart[event.id]});
+    onClose();
+  }
 
   return (
     <section className="modal-container">
@@ -31,7 +40,13 @@ function Modal({ event, onClose }) {
           <button onClick={() => addTicket(event.id)}><i class="fa-solid fa-plus"></i></button>
         </section>
       </section>
-      <button className='modal__cartBtn'>Add to cart</button>
+
+      <button 
+        className='modal__cartBtn'
+        onClick={handleAddToCart}
+      >
+        Add to cart
+      </button>
     </section>
   )
 }

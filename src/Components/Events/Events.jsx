@@ -1,15 +1,12 @@
 import './events.css';
 import EventItem from '../EventItem/EventItem';
-import useFetchConcerts from '../../Hooks/fetchAPI';
+import useConcertStore from '../../Stores/ConcertStore';
 import Modal from '../Modal/Modal';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function Events() {
-  const { data, isLoading, error } = useFetchConcerts();
+  const events = useConcertStore((state) => state.events);
   const [selectedEvent, setSelectedEvent] = useState(null);
-
-  if (isLoading) return <p>Loading events...</p>;
-  if (error) return <p>Error loading events: {error}</p>;
 
   const handleEventClick = (event) => {
     setSelectedEvent(event);
@@ -25,13 +22,18 @@ function Events() {
         <p className="event__search--desc">enter location...</p>
       </figure>
 
-      {data.events.map((event) => (
-        <EventItem 
-          key={event.id} 
-          event={event}
-          onClick={()=> handleEventClick(event)}
+      {events.length === 0 ? (
+        <p>No events available</p>
+      ) : (
+        events.map((event) => (
+          <EventItem 
+            key={event.id} 
+            event={event}
+            onClick={() => handleEventClick(event)}
           />
-      ))}
+        ))
+      )}
+
       {selectedEvent && (
         <Modal event={selectedEvent} onClose={closeModal} />
       )}
