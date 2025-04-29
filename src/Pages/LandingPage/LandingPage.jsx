@@ -1,13 +1,23 @@
 import './landingPage.css';
 import Logo from '../../Components/Logo/Logo';
-import Footer from '../../Components/Footer/Footer';
+import { useNavigate } from 'react-router-dom';
 
 function LandingPage() {
+  const navigate = useNavigate();
+
+  const handleGoShop = () => {
+    navigate('/events');
+  };
 
   return (
-    <section className="page landing-page">
+    <section className="landing-page">
         <Logo />
-        <Footer />
+        <button 
+          className='landing-page--Btn' 
+          onClick={handleGoShop}
+          >
+          Go Shop!
+        </button>
     </section>
   )
 }
