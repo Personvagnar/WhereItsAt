@@ -9,6 +9,7 @@ function Header() {
       {location.pathname === "/" && <h2 className='h2'></h2>}
       {location.pathname === "/events" && <h2 className='h2'>Events</h2>}
       {location.pathname === "/cart" && <h2 className="h2">Order</h2> }
+      {location.pathname === "/receipt" && <h2 className='h2'>Receipt</h2>}
     </section>
   )
 }
