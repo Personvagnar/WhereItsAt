@@ -1,9 +1,8 @@
 import './modal.css';
 import useConcertStore from '../../Stores/ConcertStore';
-import { useEffect } from 'react';
 
 function Modal({ event, onClose }) {
-  const { cart, addTicket, removeTicket, setEvents } = useConcertStore();
+  const { cart, addTicket, removeTicket } = useConcertStore();
 
   const quantity = cart[event.id] || 1;
 

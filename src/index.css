@@ -21,6 +21,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 .app {
   background: var(--purple);
   min-height: 100vh;
@@ -51,4 +52,11 @@
   height: 100vh;
   font-size: x-large;
   color: var(--light-white);
+}
+.noItems {
+  font-size: large;
+  color: var(--light-white);
+  height: 60vh;
+  display: grid;
+  place-content: center;
 }

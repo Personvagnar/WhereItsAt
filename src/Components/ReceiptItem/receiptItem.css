@@ -1,0 +1,56 @@
+.receiptItem-container {
+    width: 90%;
+    height: calc(100vh - 10rem);
+    display: grid;
+    background: var(--white);
+    color: var(--black7);
+    border-radius: 5px;
+    position: fixed;
+    top: auto;
+    left: auto;
+    border: 2px solid var(--grey);
+    box-shadow: 6px 6px 1px var(--pink);
+    z-index: -10;
+
+    .receiptItem__title, .receiptItem__location, .receiptItem__information, .receiptItem__seats, .receiptItem__barcode {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .receiptItem__title {
+        background: var(--white);
+        border-radius: 5px 5px 0px 0px;
+    }
+    .receiptItem__location {
+        font-size: large;
+        border-top: 1px solid var(--grey);
+    }
+
+    .receiptItem__information {
+        justify-content: space-between;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border-top: 2px dashed var(--black6);
+        border-bottom: 2px dashed var(--black6);
+    }
+    .receiptItem__seats {
+        background: var(--grey);
+        justify-content: space-around;
+    }
+    .receiptItem__barcode {
+        flex-direction: column;
+    }
+    .receiptItem__barcode p:nth-child(1) {
+        background: var(---light-grey);
+        font-family: 'Libre Barcode 39', sans-serif;
+        font-size: 4rem;
+    }
+    .receiptItem__barcode p:nth-child(2) {
+        font-size: small;
+    }
+}
+
+.receiptItem-container.receiptItem--active {
+    z-index: 1;
+  }

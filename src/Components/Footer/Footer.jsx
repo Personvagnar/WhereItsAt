@@ -11,6 +11,8 @@ function Footer() {
               <Link to="/events" className="link"> Events</Link></li>
             <li className={`footer__li ${location.pathname === "/cart" ? 'footer__li--active' : ''}`}>
               <Link to="/cart" className="link"> Cart</Link></li>
+            <li className={`footer__li ${location.pathname === "/receipt" ? 'footer__li--active' : ''}`}>
+              <Link to="/receipt" className="link"> Receipt</Link></li>
         </ul>
     </nav>
   )

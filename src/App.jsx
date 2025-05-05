@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import EventsPage from "./Pages/EventsPage/EventsPage";
+import ReceiptPage from "./Pages/ReceiptPage/ReceiptPage";
 import CartPage from "./Pages/CartPage/CartPage";
 import useConcertStore from "./Stores/ConcertStore";
 
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/cart/",
     element: <CartPage />,
+  },
+  {
+    path: "/receipt",
+    element: <ReceiptPage />,
   },
   {
     path: "*",
