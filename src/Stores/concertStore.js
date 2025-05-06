@@ -9,6 +9,8 @@ const useConcertStore = create((set) => ({
   setEvents: (events) => set({ events }),
   setLoading: (isLoading) => set({ isLoading }),
   setError: (error) => set({ error }),
+  clearCart: () => set({ cart: {} }),
+  clearEvents: () => set({ events: [] }),
 
   fetchEvents: async () => {
     
