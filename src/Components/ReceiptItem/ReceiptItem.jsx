@@ -6,9 +6,11 @@ function ReceiptItem({ event, className = '' }) {
         <section className="receiptItem__title h2">
           {event.name}
         </section>
-        <section className="receiptItem__location">
-          {event.where}
-        </section>
+        
+          <section className="receiptItem__location">
+            {event.where}
+          </section>
+        
         <section className="receiptItem__information">
           <p>{event.when.date}</p>
           <p>{event.when.from}</p>

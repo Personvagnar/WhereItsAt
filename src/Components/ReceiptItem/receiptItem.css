@@ -10,7 +10,10 @@
     left: auto;
     border: 2px solid var(--grey);
     box-shadow: 6px 6px 1px var(--pink);
-    z-index: -10;
+    opacity: 0.5;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100px) scale(0.5);
+    z-index: 0;
 
     .receiptItem__title, .receiptItem__location, .receiptItem__information, .receiptItem__seats, .receiptItem__barcode {
         width: 100%;
@@ -52,5 +55,7 @@
 }
 
 .receiptItem-container.receiptItem--active {
+    opacity: 1;
+    transform: scale(1);
     z-index: 1;
-  }
+}

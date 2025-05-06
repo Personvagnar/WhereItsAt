@@ -6,6 +6,7 @@ function LandingPage() {
   const navigate = useNavigate();
 
   const handleGoShop = () => {
+    localStorage.clear();
     navigate('/events');
   };
 
