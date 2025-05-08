@@ -19,13 +19,12 @@ Jag har använt mig av följande bibliotek:
   Används för att generera ett **unikt ID** som jag sedan modifierar så här:
   ```js
   .substring(0, 5).toUpperCase();
-  ´´´
 
-  Jag använder samma UUID för min barcode men där sätter css klassen:
+  -Jag använder samma UUID för min barcode men där sätter css klassen:
   font-family: 'Libre Barcode 39';
   
 - **Swiper**
   Jag använder Swiper som navigering för mina Receipts med följande moduler:
-  *Swiper*
-  *SwiperSlide*
-  *Pagination* – visar vilken biljett du är på och hur många du har.
+  -*Swiper*
+  -*SwiperSlide*
+  -*Pagination* – visar vilken biljett du är på och hur många du har.
