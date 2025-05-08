@@ -15,13 +15,13 @@ Jag har använt mig av följande bibliotek:
   - **−**
   - **✖ (stäng)**
 
-- **UUID**  
+- **UUID**
   Används för att generera ett **unikt ID** som jag sedan modifierar så här:
   ```js
   .substring(0, 5).toUpperCase();
 
 
-  Jag använder samma UUID för min barcode men där sätter css klassen:
+  *Jag använder samma UUID för min barcode men där sätter css klassen:
   font-family: 'Libre Barcode 39';
   
 - **Swiper**
