@@ -26,7 +26,7 @@ Jag har använt mig av följande bibliotek:
   
 - **Swiper**
   Jag använder Swiper som navigering för mina Receipts med följande moduler:
-  *Swiper*
-  *SwiperSlide*
-  *Pagination*
+  - *Swiper*
+  - *SwiperSlide*
+  - *Pagination*
   – visar vilken biljett du är på och hur många du har.
