@@ -20,8 +20,8 @@ Jag har använt mig av följande bibliotek:
   ```js
   .substring(0, 5).toUpperCase();
 
-
-  *Jag använder samma UUID för min barcode men där sätter css klassen:
+-  **Barcode**
+  Jag använder samma UUID för min barcode men där sätter css klassen:
   font-family: 'Libre Barcode 39';
   
 - **Swiper**
