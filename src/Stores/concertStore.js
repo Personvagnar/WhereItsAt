@@ -37,6 +37,7 @@ const useConcertStore = create((set) => ({
   addTicket: (eventId) =>
     set((state) => {
       const currentQty = state.cart[eventId] || 0;
+      console.log(currentQty);
       return {
         cart: {
           ...state.cart,

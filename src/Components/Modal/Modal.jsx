@@ -1,18 +1,26 @@
 import './modal.css';
 import useConcertStore from '../../Stores/ConcertStore';
+import { useState } from 'react';
 
 function Modal({ event, onClose }) {
-  const { cart, addTicket, removeTicket } = useConcertStore();
+  const { addTicket } = useConcertStore();
 
-  const quantity = cart[event.id] || 1;
+  const [localQty, setLocalQty] = useState(1);
 
-
+  const handleAdd = () => setLocalQty((prev) => prev + 1);
+  const handleSubtract = () => {
+    if (localQty > 1) {
+      setLocalQty((prev) => prev - 1);
+    }
+  };
 
   const handleAddToCart = () => {
-    addTicket(event.id);
-    console.log({eventId: event.id, quantity: cart[event.id]});
+    for (let i = 0; i < localQty; i++) {
+      addTicket(event.id);
+    }
     onClose();
   }
+
 
   return (
     <section className="modal-container">
@@ -29,14 +37,14 @@ function Modal({ event, onClose }) {
 
       <section className="modal__ticketbox">
         <h4>
-          {quantity === 0
+          {localQty === 0
           ? `${event.price} sek`
-          : `${quantity * event.price} sek`}
+          : `${localQty * event.price} sek`}
         </h4>
         <section className='modal__ticketbox--counter'>
-          <button onClick={() => removeTicket(event.id)}><i class="fa-solid fa-minus"></i></button>
-          <span>{quantity}</span>
-          <button onClick={() => addTicket(event.id)}><i class="fa-solid fa-plus"></i></button>
+          <button onClick={handleSubtract}><i class="fa-solid fa-minus"></i></button>
+          <span>{localQty}</span>
+          <button onClick={handleAdd}><i class="fa-solid fa-plus"></i></button>
         </section>
       </section>
 
