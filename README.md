@@ -22,6 +22,7 @@ Jag har använt mig av följande bibliotek:
 
 -  **Barcode**
   Jag använder samma UUID för min barcode men där sätter css klassen:
+```css
   font-family: 'Libre Barcode 39';
   
 - **Swiper**
