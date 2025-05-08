@@ -22,13 +22,13 @@ function Cart() {
       const navigate = useNavigate();
 
     const handlePurchaseBtn = () => {
-      const sortedReceipts = cartItems.flatMap((event) => {
+        const sortedReceipts = cartItems.flatMap((event) => {
         const arenasection = String.fromCharCode(Math.floor(Math.random() * 5) + 65);
         const seatStart = Math.floor(Math.random() *500) + 1;
 
         return Array.from({ length: event.quantity}, (_, index) => ({
           ...event,
-          barcode: uuidv4().substring(0, 5),
+          barcode: uuidv4().substring(0, 5).toUpperCase(),
           arenasection,
           seat: seatStart + index,
         }));
